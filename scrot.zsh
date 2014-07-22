@@ -9,7 +9,7 @@ sblog() {
 }
 
 sprev() {
-    if [ -f $last_scrot ]; then
+    if [ -d $last_scrot ]; then
         xdg-open $last_scrot
     else
         echo "run swiki or sblog first!"
@@ -18,4 +18,5 @@ sprev() {
 
 sundo() {
     rm $last_scrot -f
+    unset last_scrot
 }
