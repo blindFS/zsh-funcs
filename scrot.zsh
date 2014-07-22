@@ -1,15 +1,25 @@
 swiki() {
-    last_scrot=$HOME/Dropbox/vimwiki/html/assets/image/$1.png
+    if [ $# = 0 ]; then
+        name="test"
+    else
+        name=$1
+    fi
+    last_scrot=$HOME/Dropbox/vimwiki/html/assets/image/$name.png
     scrot -s $last_scrot
 }
 
 sblog() {
+    if [ $# = 0 ]; then
+        name="test"
+    else
+        name=$1
+    fi
     last_scrot=$HOME/workspace/html/blog-raw/assets/images/article/$1.png
     scrot -s $last_scrot
 }
 
 sprev() {
-    if [ -d $last_scrot ]; then
+    if (( $+last_scrot )); then
         xdg-open $last_scrot
     else
         echo "run swiki or sblog first!"
