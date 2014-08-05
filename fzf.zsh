@@ -88,3 +88,7 @@ vfg() {
 vlocate() {
     vim `locate $@ | fzf`
 }
+
+xlocate() {
+    xdg-open `locate $@ | fzf`
+}
