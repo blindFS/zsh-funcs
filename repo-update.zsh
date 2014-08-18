@@ -27,7 +27,7 @@ function src-update () {
 function repo-update {
     cd $HOME
     print "\n\33[32m*************************\33[34mgit submodule\33[32m**********************************\33[0m\n"
-    git submodule foreach git pull && git rebase
+    git submodule foreach 'git pull && git rebase'
     print "\n\33[32m*************************\33[34mnpm\33[32m**********************************\33[0m\n"
     sudo npm update -g
     print "\n\33[32m*************************\33[34mgem\33[32m**********************************\33[0m\n"
