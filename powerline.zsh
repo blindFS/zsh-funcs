@@ -52,7 +52,7 @@ _powerline_install_precmd() {
 ╚$vimod'
         PS2='%_ %{$fg[green]%}➤'
         PS2='%_ %{$fg[green]%}➤'
-        RPS1='%{$(echotc UP 1)%}$($POWERLINE_COMMAND shell right -r zsh_prompt --last_exit_code=$? --last_pipe_status="$pipestatus")%{$(echotc DOWN 1)%}'
+        RPS1='$($POWERLINE_COMMAND shell right -r zsh_prompt --last_exit_code=$? --last_pipe_status="$pipestatus")'
     fi
 }
 
