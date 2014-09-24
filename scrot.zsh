@@ -4,7 +4,7 @@ swiki() {
     else
         name=$1
     fi
-    last_scrot=$HOME/Dropbox/vimwiki/public/html/assets/image/$name.png
+    last_scrot=$HOME/Dropbox/Public/html/assets/image/$name.png
     scrot -s $last_scrot
 }
 
