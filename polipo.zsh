@@ -1,0 +1,12 @@
+socks_proxy()
+{
+    if (( $+http_proxy )); then
+        unset http_proxy
+        unset https_proxy
+        echo "disabled"
+    else
+        export http_proxy=http://localhost:8123
+        export https_proxy=http://localhost:8123
+        echo "enabled"
+    fi
+}
