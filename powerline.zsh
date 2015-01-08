@@ -48,11 +48,11 @@ _powerline_install_precmd() {
         zle -N zle-line-init
         zle -N zle-keymap-select
 
-        PS1='╔$($POWERLINE_COMMAND shell left -r .zsh --last_exit_code=$? --last_pipe_status="$pipestatus")
+        PS1='╔$($POWERLINE_COMMAND shell left -r .zsh --last-exit-code=$? --last-pipe-status="$pipestatus")
 ╚$vimod'
         PS2='%_ %{$fg[green]%}➤'
         PS2='%_ %{$fg[green]%}➤'
-        RPS1='$($POWERLINE_COMMAND shell right -r .zsh --last_exit_code=$? --last_pipe_status="$pipestatus")'
+        RPS1='$($POWERLINE_COMMAND shell right -r .zsh --last-exit-code=$? --last-pipe-status="$pipestatus")'
     fi
 }
 
