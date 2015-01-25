@@ -80,6 +80,7 @@ if [[ $- =~ i ]]; then
             zle redisplay
         }
     fi
+    zle     -N   fzf-file-widget
 
     # ALT-C - cd into the selected directory
     fzf-cd-widget() {
@@ -87,11 +88,13 @@ if [[ $- =~ i ]]; then
             -o -type d -print 2> /dev/null | fzf):-.}"
         zle reset-prompt
     }
+    zle     -N   fzf-cd-widget
 
     # CTRL-R - Paste the selected command from history into the command line
     fzf-history-widget() {
         LBUFFER=$(fc -l 1 | fzf +s +m -n2..,.. | sed "s/ *[0-9*]* *//")
         zle redisplay
     }
+    zle     -N   fzf-history-widget
 
 fi
