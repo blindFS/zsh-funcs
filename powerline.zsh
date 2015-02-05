@@ -2,7 +2,7 @@ if test -z "${POWERLINE_COMMAND}" ; then
     if which powerline-client &>/dev/null ; then
         export POWERLINE_COMMAND=powerline-client
     else
-        export POWERLINE_COMMAND=powerline
+        export POWERLINE_COMMAND=powerline-render
     fi
 fi
 
