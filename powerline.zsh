@@ -36,16 +36,21 @@ _powerline_install_precmd() {
         zpython 'powerline_setup()'
         zpython 'del powerline_setup'
     else
-        function zle-line-init zle-keymap-select {
-            if [[ $KEYMAP = "vicmd" ]]; then
-                vimod="%{$bg[cyan]$fg[black]%}  Normal %{$reset_color$fg[cyan]%}"
+        vimodins="%{$bg[yellow]$fg[black]%} ✎ Insert %{$reset_color$fg[yellow]%}"
+        vimodcmd="%{$bg[cyan]$fg[black]%}  Normal %{$reset_color$fg[cyan]%}"
+        vimod=$vimodins
+        function zle-keymap-select {
+            if (( $+functions[auto-fu-zle-keymap-select] )); then
+                auto-fu-zle-keymap-select
+            fi
+            if [[ $KEYMAP =~ "vicmd" ]]; then
+                vimod=$vimodcmd
             else
-                vimod="%{$bg[yellow]$fg[black]%} ✎ Insert %{$reset_color$fg[yellow]%}"
+                vimod=$vimodins
             fi
             zle reset-prompt
             zle -R
         }
-        zle -N zle-line-init
         zle -N zle-keymap-select
 
         PS1='╔$($POWERLINE_COMMAND shell left -r .zsh --last-exit-code=$? --last-pipe-status="$pipestatus")
