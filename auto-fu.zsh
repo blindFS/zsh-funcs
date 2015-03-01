@@ -10,7 +10,8 @@ zstyle ':auto-fu:var' autoable-function/skipwords \
 zstyle ':auto-fu:var' autoable-function/skiplbuffers \
     'rm -[![:blank:]]#'
 zstyle ':auto-fu:var' autoable-function/skiplines \
-    'yaourt *' 'systemctl [[:print:]]# *'
+    'yaourt *'  'kill *' 'systemctl [[:print:]]# *' \
+    'mv [[:print:]]# *' 'rm *'
 
 zle-line-init () {
     auto-fu-init
