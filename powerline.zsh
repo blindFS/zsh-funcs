@@ -39,7 +39,7 @@ _powerline_install_precmd() {
         vimodins="%{$bg[yellow]$fg[black]%} ✎ Insert %{$reset_color$fg[yellow]%}"
         vimodcmd="%{$bg[cyan]$fg[black]%}  Normal %{$reset_color$fg[cyan]%}"
         vimod=$vimodins
-        function zle-keymap-select {
+        function zle-line-init zle-keymap-select {
             if (( $+functions[auto-fu-zle-keymap-select] )); then
                 auto-fu-zle-keymap-select
             fi
