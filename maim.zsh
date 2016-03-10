@@ -14,7 +14,7 @@ mblog() {
     else
         name=$1
     fi
-    last_maim=$HOME/workspace/html/blog-raw/assets/images/article/$1.png
+    last_maim=$HOME/workspace/html/blog/source/assets/images/article/$name.png
     maim -s $last_maim
 }
 

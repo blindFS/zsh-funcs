@@ -1,3 +1,11 @@
+function cprint {
+    print "\n\33[32m"
+    printf "=%.0s" {1..$((25-$#1/2))}
+    printf "\33[3$2m $1 \33[32m"
+    printf "=%.0s" {1..$((26-$#1/2-$#1%2))}
+    print "\33[0m\n"
+}
+
 function src-update () {
     eval currentpath=$(pwd)
     eval gitpath=$(realpath $1)
@@ -6,18 +14,18 @@ function src-update () {
             cd $i
             eval repo=$(echo $i | gawk -F "/" '{print $NF}')
             if [[ -d ".git" ]]; then
-                print "\n\33[32m****************\33[34mpulling $repo\33[32m****************\33[0m\n"
+                cprint "pulling $repo" 4
                 git pull && git rebase
             elif [[ -d ".hg" ]]; then
-                print "\n\33[32m****************\33[34mpulling $repo\33[32m****************\33[0m\n"
+                cprint "pulling $repo" 4
                 hg pull
-                print "\n\33[32m****************\33[34mupdating $repo\33[32m****************\33[0m\n"
+                cprint "upding $repo" 4
                 hg update
             elif [[ -d ".svn" ]]; then
-                print "\n\33[32m****************\33[34mupdating $repo\33[32m****************\33[0m\n"
+                cprint "upding $repo" 4
                 svn update
             elif [[ -d "CVS" ]] ; then
-                print "\n\33[32m****************\33[34mupdating $repo\33[32m****************\33[0m\n"
+                cprint "upding $repo" 4
                 cvs update
             fi
         done
@@ -26,18 +34,19 @@ function src-update () {
 
 function repo-update {
     cd $HOME
-    print "\n\33[32m*************************\33[34mgit submodule\33[32m**********************************\33[0m\n"
+    cprint "git submodule" 3
     git submodule foreach 'git pull && git rebase'
-    print "\n\33[32m*************************\33[34mtmux plugins\33[32m**********************************\33[0m\n"
+    cprint "tmux plugins" 3
     src-update ~/.tmux/plugins
-    print "\n\33[32m*************************\33[34mnpm\33[32m**********************************\33[0m\n"
+    cprint "npm" 1
     sudo npm update -g
-    print "\n\33[32m*************************\33[34mgem\33[32m**********************************\33[0m\n"
+    cprint "gem" 1
     gem update
+    sudo gem cleanup
     gem cleanup
-    # print "\n\33[32m*************************\33[34mpear\33[32m*********************************\33[0m\n"
+    # cprint "pear" 1
     # sudo pear upgrade
-    print "\n\33[32m**************************************************************\33[0m\n"
+    cprint "antigen" 3
     antigen update
     antigen selfupdate
     if [[ -d "$HOME/src" ]]; then
