@@ -18,7 +18,3 @@ function autodoubq()
     RBUFFER='"'"$RBUFFER"
 }
 zle -N autodoubq autodoubq
-
-bindkey '"' autodoubq
-bindkey "'" autosingq
-bindkey "(" autoparen
