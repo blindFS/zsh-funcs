@@ -46,9 +46,8 @@ function repo-update {
     gem cleanup
     # cprint "pear" 1
     # sudo pear upgrade
-    cprint "antigen" 3
-    antigen update
-    antigen selfupdate
+    cprint "zplug" 3
+    zplug update
     if [[ -d "$HOME/src" ]]; then
         src-update $HOME/src
     else

@@ -137,6 +137,11 @@ _fzf_complete_unalias() {
 }
 
 fzf-completion() {
+  # dots
+  [[ -n "$terminfo[rmam]" && -n "$terminfo[smam]" ]] && echoti rmam
+  print -Pn "%{%F{red}...%f%}"
+  [[ -n "$terminfo[rmam]" && -n "$terminfo[smam]" ]] && echoti smam
+
   local tokens cmd prefix trigger tail fzf matches lbuf d_cmds
   setopt localoptions noshwordsplit noksh_arrays
 
@@ -181,7 +186,9 @@ fzf-completion() {
   # Fall back to default completion
   else
     zle ${fzf_default_completion:-expand-or-complete}
+    zle redisplay
   fi
+
 }
 
 # [ -z "$fzf_default_completion" ] && {
