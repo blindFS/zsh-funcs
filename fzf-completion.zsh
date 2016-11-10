@@ -191,10 +191,4 @@ fzf-completion() {
 
 }
 
-# [ -z "$fzf_default_completion" ] && {
-#   binding=$(bindkey '^I')
-#   [[ $binding =~ 'undefined-key' ]] || fzf_default_completion=$binding[(s: :w)2]
-#   unset binding
-# }
-
 zle     -N   fzf-completion
