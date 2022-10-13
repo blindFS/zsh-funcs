@@ -5,8 +5,8 @@ socks_proxy()
         unset https_proxy
         echo "disabled"
     else
-        export http_proxy=http://localhost:8123
-        export https_proxy=http://localhost:8123
+        export http_proxy=http://localhost:7890
+        export https_proxy=http://localhost:7890
         echo "enabled"
     fi
 }
