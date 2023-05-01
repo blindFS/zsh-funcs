@@ -17,31 +17,3 @@ export DEFAULT_USER="$USER"
 # Vi-Mode
 POWERLEVEL9K_VI_INSERT_MODE_STRING="✎"
 POWERLEVEL9K_VI_COMMAND_MODE_STRING=""
-
-function zle-line-init {
-    powerlevel9k_prepare_prompts
-    if (( ${+terminfo[smkx]} )); then
-        printf '%s' ${terminfo[smkx]}
-    fi
-    zle reset-prompt
-    zle -R
-}
-
-function zle-line-finish {
-    powerlevel9k_prepare_prompts
-    if (( ${+terminfo[rmkx]} )); then
-        printf '%s' ${terminfo[rmkx]}
-    fi
-    zle reset-prompt
-    zle -R
-}
-
-function zle-keymap-select {
-    powerlevel9k_prepare_prompts
-    zle reset-prompt
-    zle -R
-}
-
-zle -N zle-line-init
-# zle -N zle-line-finish
-zle -N zle-keymap-select
